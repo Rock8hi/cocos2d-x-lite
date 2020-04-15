@@ -208,6 +208,16 @@ public class Cocos2dxEditBox {
             this.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    switch (actionId) {
+                        case EditorInfo.IME_ACTION_DONE:
+                        case EditorInfo.IME_ACTION_NEXT:
+                        case EditorInfo.IME_ACTION_SEARCH:
+                        case EditorInfo.IME_ACTION_GO:
+                        case EditorInfo.IME_ACTION_SEND:
+                            Cocos2dxEditBox.this.onKeyboardConfirm(mEditText.getText().toString());
+                            break;
+                    }
+
                     if (! mIsMultiLine) {
                         Cocos2dxEditBox.this.hide();
                     }
